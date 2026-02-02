@@ -1,0 +1,92 @@
+/* Blocky Gruvbox Palette */
+@define-color bg #282828;
+@define-color bg-alt #3c3836;
+@define-color fg #ebdbb2;
+@define-color yellow #fabd2f;
+@define-color gray #a89984;
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background: @bg;
+    color: @fg;
+    border-bottom: 2px solid @bg-alt;
+}
+
+/* Workspaces */
+#workspaces {
+    background: @bg;
+    margin: 0;
+    padding: 0;
+}
+
+#workspaces button {
+    padding: 0 15px;
+    color: @gray;
+    background: transparent;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+#workspaces button.active {
+    color: @fg;
+    background: @bg-alt;
+    border-bottom: 3px solid @yellow;
+}
+
+#workspaces button:hover {
+    background: @bg-alt;
+    color: @fg;
+    border-bottom: 3px solid @yellow;
+}
+
+#window {
+    padding: 0 20px;
+    color: @fg;
+    background: @bg;
+}
+
+/* Modules Center & Right */
+#clock,
+#pulseaudio,
+#cpu,
+#memory,
+#network,
+#custom-weather,
+#tray,
+#custom-power {
+    padding: 0 15px;
+    background: @bg;
+    color: @fg;
+    border-left: 2px solid @bg-alt;
+}
+
+#clock {
+    color: @yellow;
+    background: @bg;
+}
+
+#pulseaudio {
+    color: @yellow;
+}
+
+#custom-power {
+    padding-right: 20px;
+    color: #cc241d;
+    /* Red for power */
+}
+
+tooltip {
+    background: @bg;
+    border: 1px solid @yellow;
+}
+
+tooltip label {
+    color: @fg;
+}

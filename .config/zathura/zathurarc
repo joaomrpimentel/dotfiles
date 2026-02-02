@@ -1,0 +1,47 @@
+# Zathura Gruvbox Dark Theme
+
+# Basic settings
+set selection-clipboard clipboard
+
+# UI Colors
+set default-bg "#282828"
+set default-fg "#ebdbb2"
+
+set statusbar-bg "#282828"
+set statusbar-fg "#ebdbb2"
+
+set inputbar-bg "#282828"
+set inputbar-fg "#ebdbb2"
+
+set notification-bg "#282828"
+set notification-fg "#ebdbb2"
+set notification-error-bg "#282828"
+set notification-error-fg "#cc241d"
+set notification-warning-bg "#282828"
+set notification-warning-fg "#d79921"
+
+set completion-bg "#282828"
+set completion-fg "#ebdbb2"
+set completion-group-bg "#282828"
+set completion-group-fg "#d79921"
+set completion-highlight-bg "#d65d0e"
+set completion-highlight-fg "#ebdbb2"
+
+set index-bg "#282828"
+set index-fg "#ebdbb2"
+set index-active-bg "#d65d0e"
+set index-active-fg "#ebdbb2"
+
+set render-loading-bg "#282828"
+set render-loading-fg "#ebdbb2"
+
+# Highlight colors
+set highlight-color "rgba(215, 153, 33, 0.5)"
+set highlight-active-color "rgba(69, 133, 136, 0.5)"
+
+# Recolor options (Dark Mode for PDFs)
+set recolor "true"
+set recolor-lightcolor "#282828"
+set recolor-darkcolor "#ebdbb2"
+set recolor-reverse-video "true"
+set recolor-keephue "true"

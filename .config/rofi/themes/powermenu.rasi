@@ -1,0 +1,86 @@
+/*******************************************************************************
+ * POWERMENU THEME
+ * Modern grid-style power menu with large icon buttons
+ *******************************************************************************/
+
+configuration {
+    show-icons:             false;
+    font:                   "JetBrainsMono Nerd Font 11";
+    hover-select:           true;
+    me-select-entry:        "";
+    me-accept-entry:        "MousePrimary";
+
+}
+
+@theme "/dev/null"
+
+* {
+    bg0:                    #1d2021;
+    bg2:                    #3c3836;
+    fg1:                    #ebdbb2;
+    yellow:                 #fabd2f;
+    
+    background-color:       transparent;
+    text-color:             @fg1;
+}
+
+window {
+    background-color:       @bg0;
+    border:                 3px;
+    border-color:           @yellow;
+    border-radius:          20px;
+    width:                  420px;
+    location:               center;
+    anchor:                 center;
+}
+
+mainbox {
+    background-color:       transparent;
+    children:               [ message, listview ];
+    spacing:                20px;
+    padding:                25px;
+}
+
+message {
+    background-color:       transparent;
+}
+
+textbox {
+    background-color:       transparent;
+    text-color:             @yellow;
+    horizontal-align:       0.5;
+}
+
+inputbar {
+    enabled:                false;
+}
+
+listview {
+    background-color:       transparent;
+    columns:                2;
+    lines:                  2;
+    spacing:                20px;
+    cycle:                  true;
+    dynamic:                true;
+    layout:                 vertical;
+    scrollbar:              false;
+}
+
+element {
+    background-color:       @bg2;
+    padding:                35px 20px;
+    border-radius:          16px;
+}
+
+element selected.normal {
+    background-color:       @yellow;
+    text-color:             @bg0;
+}
+
+element-text {
+    background-color:       transparent;
+    text-color:             inherit;
+    font:                   "JetBrainsMono Nerd Font 28";
+    horizontal-align:       0.5;
+    vertical-align:         0.5;
+}

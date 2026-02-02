@@ -1,0 +1,77 @@
+/*******************************************************************************
+ * CONFIRMATION DIALOG THEME
+ * Small confirmation popup
+ *******************************************************************************/
+
+configuration {
+    show-icons:             false;
+    font:                   "JetBrainsMono Nerd Font 11";
+}
+
+@theme "/dev/null"
+
+* {
+    bg0:                    #1d2021;
+    bg2:                    #3c3836;
+    fg1:                    #ebdbb2;
+    red:                    #fb4934;
+    
+    background-color:       transparent;
+    text-color:             @fg1;
+}
+
+window {
+    background-color:       @bg0;
+    border:                 2px;
+    border-color:           @red;
+    border-radius:          12px;
+    width:                  200px;
+    location:               center;
+    anchor:                 center;
+    padding:                15px;
+}
+
+mainbox {
+    background-color:       transparent;
+    children:               [ inputbar, listview ];
+    spacing:                10px;
+}
+
+inputbar {
+    children:               [ prompt ];
+    background-color:       transparent;
+    padding:                5px;
+}
+
+prompt {
+    background-color:       transparent;
+    text-color:             @red;
+}
+
+entry {
+    enabled:                false;
+}
+
+listview {
+    background-color:       transparent;
+    lines:                  2;
+    columns:                1;
+    spacing:                5px;
+}
+
+element {
+    background-color:       transparent;
+    padding:                8px 15px;
+    border-radius:          8px;
+}
+
+element selected.normal {
+    background-color:       @red;
+    text-color:             @bg0;
+}
+
+element-text {
+    background-color:       transparent;
+    text-color:             inherit;
+    horizontal-align:       0.5;
+}

@@ -1,0 +1,84 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 32,
+    "spacing": 0,
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "custom/clock"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "cpu",
+        "memory",
+        "network",
+        "custom/weather",
+        "tray",
+        "custom/power"
+    ],
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}",
+        "on-click": "activate"
+    },
+    "hyprland/window": {
+        "format": " > {title}",
+        "max-length": 50,
+        "separate-outputs": true
+    },
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%H:%M | %d de %B}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "exec": "LC_TIME=pt_BR.UTF-8 date '+%H:%M | %d de %B'",
+        "interval": 10
+    },
+    "custom/clock": {
+        "format": "{}",
+        "exec": "LC_TIME=pt_BR.UTF-8 date '+%H:%M | %d de %B'",
+        "interval": 60,
+        "tooltip": false
+    },
+    "custom/weather": {
+        "format": "{}",
+        "interval": 3600,
+        "exec": "curl -s 'wttr.in?format=1'",
+        "tooltip": false
+    },
+    "cpu": {
+        "format": "CPU {usage}%",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "MEM {}%"
+    },
+    "network": {
+        "format-wifi": "WIFI {essid}",
+        "format-ethernet": "ETH {ipaddr}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "Disconnected",
+        "tooltip-format": "{ifname} via {gwaddr}"
+    },
+    "pulseaudio": {
+        "format": "VOL {volume}%",
+        "format-muted": "MUTED",
+        "on-click": "pavucontrol"
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    },
+    "custom/power": {
+        "format": "⏻ ",
+        "on-click": "~/.config/rofi/scripts/powermenu.sh",
+        "tooltip": false
+    }
+}

@@ -1,0 +1,464 @@
+/* Gruvbox Theme for SwayNC - Compact Floating Design */
+
+@define-color bg #282828;
+@define-color bg-alt #3c3836;
+@define-color fg #ebdbb2;
+@define-color yellow #fabd2f;
+@define-color gray #a89984;
+@define-color red #cc241d;
+@define-color green #b8bb26;
+@define-color aqua #8ec07c;
+@define-color selected alpha(@gray, 0.4);
+@define-color hover alpha(@gray, 0.2);
+
+* {
+    color: @fg;
+    all: unset;
+    font-size: 14px;
+    font-family: "JetBrainsMono Nerd Font";
+    transition: 200ms;
+    font-weight: 700;
+}
+
+/* ==================== CONTROL CENTER ==================== */
+.control-center {
+    background: @bg;
+
+    border: 2px solid @bg-alt;
+    margin: 12px;
+    padding: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Lista de notificações scrollável */
+.control-center-list {
+    background: transparent;
+}
+
+/* Permite que a área de notificações cresça */
+.control-center .notification-row {
+    margin: 0;
+    padding: 0;
+}
+
+.control-center .notification-background {
+    background: @bg-alt;
+    margin: 6px 0;
+
+}
+
+.control-center .notification-background .close-button,
+.notification-group-close-button {
+    opacity: 0;
+}
+
+.control-center .notification-background .close-button:hover,
+.notification-group-close-button:hover {
+    opacity: 1;
+}
+
+/* Scrollbar customizada */
+scrolledwindow {
+    background: transparent;
+}
+
+scrollbar {
+    background: transparent;
+
+    margin: 0 2px;
+}
+
+scrollbar slider {
+    background: @hover;
+
+    min-width: 6px;
+    min-height: 40px;
+}
+
+scrollbar slider:hover {
+    background: @selected;
+}
+
+scrollbar trough {
+    background: transparent;
+}
+
+/* ==================== NOTIFICATIONS ==================== */
+/* Notificações popup flutuantes */
+.notification {
+    padding: 0 5px;
+
+    margin: 6px 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    background: @bg;
+    border: 2px solid @bg-alt;
+}
+
+.notification-background {
+    background: transparent;
+    box-shadow: none;
+
+}
+
+.notification-row .inline-reply-entry {
+    padding: 5px 10px;
+    background: @bg-alt;
+
+    margin: 5px;
+}
+
+.notification-row .inline-reply-button {
+    padding: 5px 10px;
+
+    background: @hover;
+}
+
+.notification-row .inline-reply .inline-reply-button:hover {
+    background: @selected;
+}
+
+.notification .notification-content {
+    margin: 10px;
+}
+
+.notification-content .text-box {
+    margin: 0 0 0 15px;
+}
+
+.notification-content .time {
+    font-size: 12px;
+    padding: 2px 0;
+    font-weight: 800;
+    color: @gray;
+}
+
+.notification .summary {
+    font-weight: 800;
+    margin-bottom: 2px;
+    padding: 2px 0;
+    font-size: 14px;
+}
+
+.notification .body {
+    color: @gray;
+    font-size: 12px;
+}
+
+.notification.critical {
+    border: 2px solid @red;
+}
+
+.notification.low progress,
+.notification.normal progress,
+.notification.critical progress {
+    background: @selected;
+}
+
+.notification-background .close-button {
+    margin: 6px;
+    padding: 2px;
+    background: transparent;
+}
+
+.notification-background .close-button:hover {
+    background: @red;
+    color: @fg;
+}
+
+.notification>*:last-child>* {
+    min-height: 3.2em;
+}
+
+.notification>*:last-child>* .notification-action {
+    background: @hover;
+    margin: 0 6px 9px 6px;
+
+}
+
+.notification>*:last-child>* .notification-action:hover {
+    background: @selected;
+}
+
+.notification>*:last-child>* .notification-action:active {
+    background: @yellow;
+    color: @bg;
+}
+
+/* Notification groups in center */
+.notification-group {
+    margin: 0px 8px;
+}
+
+.notification-group-headers {
+    font-weight: bold;
+    color: @fg;
+}
+
+.notification-group-headers>label {
+    margin: 0 3px;
+    font-size: 14px;
+}
+
+.notification-group-icon {
+    color: @fg;
+}
+
+.notification-group-collapse-button,
+.notification-group-close-all-button {
+    background: transparent;
+    color: @fg;
+    margin: 4px;
+
+    padding: 4px;
+}
+
+/* ==================== BUTTONS GRID ==================== */
+.widget-buttons-grid {
+    padding: 4px;
+    background: transparent;
+    margin: 8px 0;
+}
+
+.widget-buttons-grid>flowbox {
+    min-height: 60px;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild {
+    /* Aproximadamente 25% menos margens para 4 botões por linha */
+    min-width: 80px;
+    padding: 4px;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button {
+    padding: 12px;
+    margin: 0;
+    background: @bg-alt;
+    min-width: 100%;
+    min-height: 60px;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button>label {
+    font-size: 20px;
+    color: @fg;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button:hover {
+    background: @selected;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button:checked {
+    background-color: @yellow;
+}
+
+.widget-buttons-grid>flowbox>flowboxchild>button:checked>label {
+    color: @bg;
+}
+
+/* ==================== VOLUME/BACKLIGHT WIDGETS ==================== */
+.widget-volume,
+.widget-backlight {
+    padding: 16px 14px;
+    margin: 4px 0;
+
+    color: @fg;
+    font-weight: 800;
+    background: @bg-alt;
+}
+
+.widget-volume label,
+.widget-backlight label {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+/* Slider mais visível e quadrado */
+.widget-volume slider,
+.widget-backlight slider {
+
+    margin: 0;
+    background: @bg;
+    min-width: 20px;
+    min-height: 28px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.widget-volume trough,
+.widget-backlight trough {
+    background: @bg;
+    margin-left: 8px;
+
+    min-height: 28px;
+}
+
+.widget-volume highlight,
+.widget-backlight highlight {
+    padding: 0;
+
+    background: @yellow;
+    min-height: 28px;
+}
+
+/* ==================== MPRIS WIDGET ==================== */
+.widget-mpris {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+/* Card do player */
+.widget-mpris-player {
+    background: @bg-alt;
+    color: @fg;
+
+    padding: 12px;
+    margin: 6px 0;
+    box-shadow: none;
+}
+
+/* Mata qualquer layer interna baseada em album art */
+.widget-mpris-player .mpris-background {
+    background: transparent;
+    background-image: none;
+    filter: none;
+    opacity: 0;
+}
+
+.widget-mpris-player .mpris-overlay {
+    background: transparent;
+    padding: 0;
+}
+
+/* Container principal - forçar layout horizontal */
+.widget-mpris-player .mpris-overlay>box {
+    margin: 0;
+    padding: 0;
+}
+
+/* Album art — pequena, à esquerda */
+.widget-mpris-album-art {
+    -gtk-icon-size: 64px;
+    min-width: 64px;
+    min-height: 64px;
+
+    margin-right: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Container de texto e controles */
+.widget-mpris-player box.vertical {
+    margin: 0;
+    padding: 0;
+}
+
+/* Texto */
+.widget-mpris-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: @fg;
+    margin: 0 0 2px 0;
+    padding: 0;
+}
+
+.widget-mpris-subtitle {
+    font-size: 12px;
+    font-weight: 500;
+    color: @gray;
+    margin: 0 0 8px 0;
+    padding: 0;
+}
+
+/* Container de botões de controle */
+.widget-mpris-player button {
+    min-width: 32px;
+    min-height: 32px;
+    padding: 6px;
+    margin: 0 3px;
+
+    background: transparent;
+    color: @gray;
+}
+
+/* Hover dos controles */
+.widget-mpris-player button:hover {
+    background: @hover;
+    color: @fg;
+}
+
+/* Botão ativo */
+.widget-mpris-player button:active {
+    background: @yellow;
+    color: @bg;
+}
+
+/* Botões específicos do player (play, pause, next, prev) */
+.widget-mpris-player .mpris-overlay>box>button {
+    min-width: 32px;
+    min-height: 32px;
+    padding: 6px;
+    margin: 0 3px;
+
+    background: transparent;
+    color: @gray;
+}
+
+.widget-mpris-player .mpris-overlay>box>button:hover {
+    background: @hover;
+    color: @fg;
+}
+
+.widget-mpris-player .mpris-overlay>box>button:active {
+    background: @yellow;
+    color: @bg;
+}
+
+/* ==================== TITLE/DND WIDGETS ==================== */
+.widget-title {
+    background: transparent;
+    margin: 4px 0;
+    padding: 0;
+}
+
+.widget-title>label {
+    color: @fg;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.widget-title>button {
+    background: @bg-alt;
+    color: @gray;
+
+    padding: 4px 12px;
+    margin-left: auto;
+}
+
+.widget-title>button:hover {
+    background: @yellow;
+    color: @bg;
+}
+
+.widget-dnd {
+    background: @bg-alt;
+    padding: 8px 14px;
+
+    margin: 4px 0;
+}
+
+.widget-dnd switch {
+
+    background: @hover;
+}
+
+.widget-dnd switch:checked {
+    background: @yellow;
+}
+
+.widget-dnd switch slider {
+    background: @fg;
+
+}
+
+/* ==================== MISC ==================== */
+.control-center-list-placeholder {
+    color: @gray;
+}

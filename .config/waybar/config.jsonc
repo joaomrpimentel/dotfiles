@@ -1,0 +1,16 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "modules-left": ["hyprland/window"],
+    "modules-center": [],
+    "modules-right": ["clock", "tray"],
+    "hyprland/window": {
+        "format": "{title}",
+        "max-length": 50
+    },
+    "clock": {
+        "format": "{:%d/%m/%Y - %H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    }
+}

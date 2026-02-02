@@ -1,0 +1,117 @@
+/*******************************************************************************
+ * APP LAUNCHER THEME
+ * Beautiful app selector with icons and modern styling
+ *******************************************************************************/
+
+configuration {
+    modi:                   "drun,run";
+    show-icons:             true;
+    display-drun:           " Apps";
+    display-run:            " Run";
+    drun-display-format:    "{name}";
+    font:                   "JetBrainsMono Nerd Font 11";
+    hover-select:           true;
+    me-select-entry:        "";
+    me-accept-entry:        "MousePrimary";
+}
+
+@theme "/dev/null"
+
+* {
+    bg0:                    #1d2021;
+    bg2:                    #3c3836;
+    fg1:                    #ebdbb2;
+    fg2:                    #d5c4a1;
+    yellow:                 #fabd2f;
+    
+    background-color:       transparent;
+    text-color:             @fg1;
+}
+
+window {
+    background-color:       @bg0;
+    border:                 3px;
+    border-color:           @yellow;
+    border-radius:          16px;
+    width:                  500px;
+    location:               center;
+    anchor:                 center;
+}
+
+mainbox {
+    background-color:       transparent;
+    children:               [ inputbar, listview ];
+    spacing:                15px;
+    padding:                20px;
+}
+
+inputbar {
+    children:               [ prompt, entry ];
+    background-color:       @bg2;
+    border-radius:          12px;
+    padding:                12px 15px;
+    spacing:                10px;
+}
+
+prompt {
+    background-color:       transparent;
+    text-color:             @yellow;
+}
+
+entry {
+    background-color:       transparent;
+    text-color:             @fg1;
+    placeholder:            "Search...";
+    placeholder-color:      @fg2;
+}
+
+listview {
+    background-color:       transparent;
+    columns:                1;
+    lines:                  8;
+    spacing:                8px;
+    cycle:                  true;
+    dynamic:                true;
+    layout:                 vertical;
+    scrollbar:              false;
+    fixed-height:           true;
+}
+
+element {
+    background-color:       transparent;
+    padding:                12px 15px;
+    border-radius:          10px;
+    spacing:                15px;
+}
+
+element normal.normal,
+element normal.active,
+element normal.urgent,
+element alternate.normal,
+element alternate.active,
+element alternate.urgent {
+    background-color:       transparent;
+    text-color:             @fg1;
+}
+
+element selected.normal {
+    background-color:       @bg2;
+    text-color:             @yellow;
+}
+
+element selected.active {
+    background-color:       @yellow;
+    text-color:             @bg0;
+}
+
+element-icon {
+    background-color:       transparent;
+    size:                   28px;
+}
+
+element-text {
+    background-color:       transparent;
+    text-color:             inherit;
+    vertical-align:         0.5;
+    horizontal-align:       0.0;
+}

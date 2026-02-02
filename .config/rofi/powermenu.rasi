@@ -1,0 +1,55 @@
+configuration {
+    show-icons: false;
+}
+
+@theme "/dev/null"
+
+* {
+    bg: #282828;
+    fg: #ebdbb2;
+    accent: #fabd2f;
+    button: #3c3836;
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    width: 450px;
+    background-color: @bg;
+    border: 2px;
+    border-color: @accent;
+    border-radius: 15px;
+    padding: 30px;
+    location: center;
+    anchor: center;
+}
+
+listview {
+    background-color: transparent;
+    columns: 2;
+    lines: 2;
+    spacing: 20px;
+    cycle: true;
+    dynamic: true;
+    layout: vertical;
+}
+
+element {
+    orientation: vertical;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: @button;
+}
+
+element selected {
+    background-color: @accent;
+    text-color: @bg;
+}
+
+element-text {
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    font: "JetBrainsMono Nerd Font 12";
+    background-color: inherit;
+    text-color: inherit;
+}

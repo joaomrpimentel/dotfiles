@@ -1,0 +1,10 @@
+width=450
+height=450
+location=center
+show=dmenu
+columns=2
+lines=2
+hide_search=true
+insensitive=true
+hide_scroll=true
+# Retire o allow_images se estiver dando erro de espaçamento

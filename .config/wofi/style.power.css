@@ -1,0 +1,20 @@
+window {
+    background-color: #282828;
+    color: #ebdbb2;
+    border: 3px solid #504945;
+    border-radius: 20px;
+    font-family: "JetBrainsMono Nerd Font";
+}
+
+#input { display: none; } /* Esconde a busca no Power Menu */
+
+#entry {
+    margin: 15px;
+    padding: 40px 10px;
+    border-radius: 15px;
+    background-color: #3c3836;
+}
+
+#entry:selected { background-color: #fabd2f; }
+#text { font-size: 25px; margin: auto; }
+#img { display: none; } /* Esconde o slot de ícone de imagem aqui */

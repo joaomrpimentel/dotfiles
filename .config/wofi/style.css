@@ -1,0 +1,28 @@
+window {
+    background-color: #282828;
+    color: #ebdbb2;
+    border: 2px solid #fabd2f;
+    border-radius: 10px;
+    font-family: "JetBrainsMono Nerd Font";
+}
+
+#input {
+    background-color: #3c3836;
+    color: #ebdbb2;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+#entry {
+    padding: 10px;
+}
+
+#entry:selected {
+    background-color: #3c3836;
+    color: #fabd2f;
+}
+
+#img {
+    margin-right: 15px; /* Espaço para o ícone aparecer */
+}
