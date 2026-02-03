@@ -82,6 +82,8 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
         "polkit-gnome"
         "ttf-font-awesome"
         "ttf-jetbrains-mono-nerd"
+        "imagemagick"
+        "feh"
         "thunar" "thunar-archive-plugin" "thunar-volman" "tumbler" "ffmpegthumbnailer" # Thunar extras
         "zathura" "zathura-pdf-mupdf" "zathura-cb" # Zathura extras
         "vivaldi"

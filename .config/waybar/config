@@ -50,7 +50,8 @@
     "custom/weather": {
         "format": "{}",
         "interval": 3600,
-        "exec": "curl -s 'wttr.in?format=1'",
+        "exec": "~/.config/waybar/scripts/weather_satellite.sh check",
+        "on-click": "~/.config/waybar/scripts/weather_satellite.sh show",
         "tooltip": false
     },
     "cpu": {
