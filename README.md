@@ -17,6 +17,9 @@ This repository contains my personal configuration files (dotfiles) for my arch 
 - **Kitty**: Terminal emulator config.
 - **Rofi/Wofi**: Application launcher config.
 - **Scripts**: Custom scripts.
+- **Neovim**: Neovim.
+- **Waypaper**: Wallpaper manager config.
+- **SwayOSD**: On-screen display for volume/brightness.
 
 Using this you can browse, screenshot, read and code. It doesn't get better than this.
 

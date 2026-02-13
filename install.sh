@@ -10,7 +10,7 @@ BACKUP_SUFFIX=".backup_$(date +%Y%m%d_%H%M%S)"
 echo "Installing dotfiles from $DOTFILES_DIR..."
 
 # List of directories to symlink (relative to .config)
-DIRS=("hypr" "waybar" "swaync" "kitty" "zathura" "rofi" "wofi" "scripts")
+DIRS=("hypr" "waybar" "swaync" "kitty" "zathura" "rofi" "wofi" "scripts" "nvim" "waypaper" "swayosd")
 
 for dir in "${DIRS[@]}"; do
     SOURCE="$DOTFILES_DIR/.config/$dir"
@@ -87,6 +87,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
         "thunar" "thunar-archive-plugin" "thunar-volman" "tumbler" "ffmpegthumbnailer" # Thunar extras
         "zathura" "zathura-pdf-mupdf" "zathura-cb" # Zathura extras
         "vivaldi"
+        "neovim"
     )
 
     echo "Installing packages with yay..."
