@@ -79,6 +79,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
         "wl-clipboard"
         "cliphist"
         "waypaper"
+        "awww"
         "polkit-gnome"
         "ttf-font-awesome"
         "ttf-jetbrains-mono-nerd"
