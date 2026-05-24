@@ -1,0 +1,106 @@
+force_keyboard_focus = false
+close_when_open = true
+click_to_close = true
+as_window = false
+single_click_activation = true
+selection_wrap = true
+global_argument_delimiter = "#"
+exact_search_prefix = "'"
+theme = "gruvbox"
+disable_mouse = false
+debug = false
+page_jump_items = 10
+hide_quick_activation = true
+hide_action_hints = true
+hide_action_hints_dmenu = true
+hide_return_action = true
+keybind_symbols = true
+resume_last_query = false
+actions_as_menu = false
+autoplay_videos = false
+ext_background_effect_blur = true
+
+[shell]
+exclusive_zone = -1
+layer = "overlay"
+anchor_top = true
+anchor_bottom = true
+anchor_left = true
+anchor_right = true
+
+[columns]
+"symbols" = 3
+
+[placeholders]
+"default" = { input = "Search apps, type math…", list = "No Results" }
+
+[keybinds]
+close = ["Escape"]
+next = ["Down", "ctrl j"]
+previous = ["Up", "ctrl k"]
+left = ["Left"]
+right = ["Right"]
+down = ["Down"]
+up = ["Up"]
+toggle_exact = ["ctrl e"]
+resume_last_query = ["ctrl r"]
+quick_activate = ["F1", "F2", "F3", "F4"]
+page_down = ["Page_Down"]
+page_up = ["Page_Up"]
+show_actions = ["alt j"]
+
+[providers]
+default = [
+  "desktopapplications",
+  "calc",
+]
+empty = ["desktopapplications"]
+ignore_preview = []
+max_results = 25
+
+[providers.argument_delimiter]
+
+[providers.sets]
+[providers.max_results_provider]
+
+[[providers.prefixes]]
+prefix = ";"
+provider = "providerlist"
+
+[[providers.prefixes]]
+prefix = ">"
+provider = "runner"
+
+[[providers.prefixes]]
+prefix = "="
+provider = "calc"
+
+[[providers.prefixes]]
+prefix = ":"
+provider = "clipboard"
+
+[providers.clipboard]
+time_format = "relative"
+
+[providers.actions]
+calc = [
+  { action = "copy", default = true, bind = "Return" },
+  { action = "save", bind = "ctrl s", after = "AsyncClearReload" },
+]
+
+desktopapplications = [
+  { action = "start", default = true, bind = "Return" },
+  { action = "new_instance", label = "new instance", bind = "ctrl Return" },
+  { action = "pin", bind = "ctrl p", after = "AsyncReload" },
+  { action = "unpin", bind = "ctrl p", after = "AsyncReload" },
+]
+
+runner = [
+  { action = "run", default = true, bind = "Return" },
+  { action = "runterminal", label = "run in terminal", bind = "shift Return" },
+]
+
+clipboard = [
+  { action = "copy", default = true, bind = "Return" },
+  { action = "remove", bind = "ctrl d", after = "AsyncClearReload" },
+]

@@ -10,7 +10,13 @@ BACKUP_SUFFIX=".backup_$(date +%Y%m%d_%H%M%S)"
 echo "Installing dotfiles from $DOTFILES_DIR..."
 
 # List of directories to symlink (relative to .config)
-DIRS=("hypr" "waybar" "swaync" "kitty" "zathura" "rofi" "wofi" "scripts" "nvim" "waypaper" "swayosd")
+DIRS=("hypr" "waybar" "swaync" "kitty" "zathura" "rofi" "wofi" "scripts" "nvim" "waypaper" "swayosd" "walker")
+
+# List of individual files to symlink: "<source-rel-to-repo>:<target-abs-path>"
+FILES=(
+    ".zshrc:$HOME/.zshrc"
+    ".config/starship.toml:$HOME/.config/starship.toml"
+)
 
 for dir in "${DIRS[@]}"; do
     SOURCE="$DOTFILES_DIR/.config/$dir"
@@ -42,6 +48,33 @@ for dir in "${DIRS[@]}"; do
     ln -s "$SOURCE" "$TARGET"
 done
 
+# Individual file symlinks (e.g. ~/.zshrc, ~/.config/starship.toml)
+for entry in "${FILES[@]}"; do
+    SRC_REL="${entry%%:*}"
+    TARGET="${entry#*:}"
+    SOURCE="$DOTFILES_DIR/$SRC_REL"
+
+    if [ ! -f "$SOURCE" ]; then
+        echo "Warning: Source file $SOURCE does not exist. Skipping."
+        continue
+    fi
+
+    echo "Processing file $SRC_REL..."
+    mkdir -p "$(dirname "$TARGET")"
+
+    if [ -e "$TARGET" ] || [ -L "$TARGET" ]; then
+        if [ -L "$TARGET" ] && [ "$(readlink -f "$TARGET")" == "$SOURCE" ]; then
+            echo "  Already linked. Skipping."
+            continue
+        fi
+        echo "  Backing up existing $TARGET to $TARGET$BACKUP_SUFFIX"
+        mv "$TARGET" "$TARGET$BACKUP_SUFFIX"
+    fi
+
+    echo "  Linking $SOURCE -> $TARGET"
+    ln -s "$SOURCE" "$TARGET"
+done
+
 # Package Installation
 echo "Do you want to install necessary packages? (y/N)"
 read -r response
@@ -69,15 +102,28 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
 
     PACKAGES=(
         "hyprland"
+        "hyprlock"
+        "hyprpicker"
         "waybar"
         "swaync"
         "kitty"
         "rofi-wayland"
+        "libqalculate"
+        # Walker launcher + providers (AUR)
+        "walker-bin"
+        "elephant-bin"
+        "elephant-desktopapplications-bin"
+        "elephant-calc-bin"
+        "elephant-clipboard-bin"
+        "elephant-runner-bin"
         "wofi"
         "swayosd-git"
         "network-manager-applet"
         "wl-clipboard"
         "cliphist"
+        "grim"
+        "slurp"
+        "jq"
         "waypaper"
         "awww"
         "polkit-gnome"
@@ -89,6 +135,17 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
         "zathura" "zathura-pdf-mupdf" "zathura-cb" # Zathura extras
         "vivaldi"
         "neovim"
+        # Shell upgrade
+        "zsh"
+        "zsh-completions"
+        "zsh-autosuggestions"
+        "zsh-syntax-highlighting"
+        "starship"
+        "fzf"
+        "atuin"
+        "zoxide"
+        "eza"
+        "bat"
     )
 
     echo "Installing packages with yay..."

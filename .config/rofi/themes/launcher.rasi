@@ -4,10 +4,14 @@
  *******************************************************************************/
 
 configuration {
-    modi:                   "drun,run";
+    modes:                  "combi,drun,run,calc";
+    combi-modes:            "drun,calc";
+    combi-display-format:   "{text}";
     show-icons:             true;
     display-drun:           " Apps";
     display-run:            " Run";
+    display-calc:           " Calc";
+    display-combi:          "";
     drun-display-format:    "{name}";
     font:                   "JetBrainsMono Nerd Font 11";
     hover-select:           true;
