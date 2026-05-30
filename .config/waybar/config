@@ -45,6 +45,7 @@
         "format": "{}",
         "exec": "LC_TIME=pt_BR.UTF-8 date '+%H:%M | %d de %B'",
         "interval": 60,
+        "on-click": "gsimplecal",
         "tooltip": false
     },
     "custom/weather": {

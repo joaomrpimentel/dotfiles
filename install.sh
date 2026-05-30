@@ -10,12 +10,13 @@ BACKUP_SUFFIX=".backup_$(date +%Y%m%d_%H%M%S)"
 echo "Installing dotfiles from $DOTFILES_DIR..."
 
 # List of directories to symlink (relative to .config)
-DIRS=("hypr" "waybar" "swaync" "kitty" "zathura" "rofi" "wofi" "scripts" "nvim" "waypaper" "swayosd" "walker")
+DIRS=("hypr" "waybar" "swaync" "kitty" "zathura" "rofi" "wofi" "scripts" "nvim" "waypaper" "swayosd" "walker" "gsimplecal")
 
 # List of individual files to symlink: "<source-rel-to-repo>:<target-abs-path>"
 FILES=(
     ".zshrc:$HOME/.zshrc"
     ".config/starship.toml:$HOME/.config/starship.toml"
+    ".config/gtk-3.0/gtk.css:$HOME/.config/gtk-3.0/gtk.css"
 )
 
 for dir in "${DIRS[@]}"; do
@@ -117,6 +118,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
         "elephant-clipboard-bin"
         "elephant-runner-bin"
         "wofi"
+        "gsimplecal"
         "swayosd-git"
         "network-manager-applet"
         "wl-clipboard"

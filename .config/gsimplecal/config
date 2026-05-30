@@ -1,0 +1,15 @@
+# gsimplecal config
+# popup calendar launched from waybar clock click
+
+# close popup when it loses focus (click away)
+close_on_unfocus = true
+
+# no extra clock display, calendar only
+show_calendar = true
+
+# week starts on Monday
+mainfont = JetBrainsMono Nerd Font 11
+headerfont = JetBrainsMono Nerd Font 12
+
+# no top date-nav buttons clutter
+show_top_buttons = true

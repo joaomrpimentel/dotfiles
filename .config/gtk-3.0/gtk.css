@@ -1,0 +1,44 @@
+/* Gruvbox theme overrides — mainly for gsimplecal calendar popup */
+@define-color gb_bg #282828;
+@define-color gb_bg_alt #3c3836;
+@define-color gb_fg #ebdbb2;
+@define-color gb_yellow #fabd2f;
+@define-color gb_gray #a89984;
+
+/* gsimplecal window + calendar widget */
+window.background {
+  background-color: @gb_bg;
+  color: @gb_fg;
+}
+
+calendar {
+  background-color: @gb_bg;
+  color: @gb_fg;
+  border: 1px solid @gb_yellow;
+  padding: 4px;
+}
+
+calendar:selected {
+  background-color: @gb_yellow;
+  color: @gb_bg;
+}
+
+calendar.header {
+  background-color: @gb_bg;
+  color: @gb_yellow;
+}
+
+calendar.button {
+  color: @gb_fg;
+  background-color: @gb_bg_alt;
+}
+
+calendar.button:hover {
+  background-color: @gb_yellow;
+  color: @gb_bg;
+}
+
+/* dim days outside current month */
+calendar.highlight {
+  color: @gb_yellow;
+}
