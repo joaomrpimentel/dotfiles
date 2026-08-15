@@ -1,44 +1,58 @@
-/* Gruvbox theme overrides — mainly for gsimplecal calendar popup */
-@define-color gb_bg #282828;
-@define-color gb_bg_alt #3c3836;
-@define-color gb_fg #ebdbb2;
-@define-color gb_yellow #fabd2f;
-@define-color gb_gray #a89984;
+/* GTK3 — monochrome (see .config/PALETTE.md) */
+@define-color mono_bg     #141414;
+@define-color mono_raised #1f1f1f;
+@define-color mono_fg     #ffffff;
+@define-color mono_dim    #a2a2a2;
+@define-color mono_line   #2a2a2a;
 
-/* gsimplecal window + calendar widget */
-window.background {
-  background-color: @gb_bg;
-  color: @gb_fg;
-}
+/* Adwaita's dark palette is neutral apart from the blue it uses for every
+ * selection and focus ring. Redefining its named colors here covers Thunar,
+ * pavucontrol, nm-applet, GTK file dialogs — everything that isn't ours. */
+@define-color theme_selected_bg_color   #2f2f2f;
+@define-color theme_selected_fg_color   #ffffff;
+@define-color theme_bg_color            #141414;
+@define-color theme_fg_color            #dcdcdc;
+@define-color theme_base_color          #101010;
+@define-color theme_text_color          #dcdcdc;
+@define-color insensitive_fg_color      #6e6e6e;
+@define-color borders                   #2a2a2a;
+@define-color link_color                #dcdcdc;
+@define-color visited_link_color        #a2a2a2;
+@define-color error_color               #ff5555;
+@define-color warning_color             #dcdcdc;
+@define-color success_color             #dcdcdc;
 
+/* gsimplecal calendar popup. Scoped to the calendar widget on purpose — a
+ * blanket `window.background` rule would repaint every GTK3 app's window and
+ * fight their own layouts; the named colors above already handle those. */
 calendar {
-  background-color: @gb_bg;
-  color: @gb_fg;
-  border: 1px solid @gb_yellow;
-  padding: 4px;
+  background-color: @mono_bg;
+  color: @mono_dim;
+  border: 1px solid @mono_line;
+  padding: 6px;
 }
 
 calendar:selected {
-  background-color: @gb_yellow;
-  color: @gb_bg;
+  background-color: @mono_fg;
+  color: @mono_bg;
 }
 
 calendar.header {
-  background-color: @gb_bg;
-  color: @gb_yellow;
+  background-color: @mono_bg;
+  color: @mono_fg;
 }
 
 calendar.button {
-  color: @gb_fg;
-  background-color: @gb_bg_alt;
+  color: @mono_dim;
+  background-color: @mono_raised;
 }
 
 calendar.button:hover {
-  background-color: @gb_yellow;
-  color: @gb_bg;
+  background-color: @mono_line;
+  color: @mono_fg;
 }
 
-/* dim days outside current month */
+/* today / days outside the current month */
 calendar.highlight {
-  color: @gb_yellow;
+  color: @mono_fg;
 }

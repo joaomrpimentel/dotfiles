@@ -1,6 +1,5 @@
 /*******************************************************************************
  * CLIPBOARD MANAGER THEME
- * Clean list view for clipboard history
  *******************************************************************************/
 
 configuration {
@@ -9,64 +8,50 @@ configuration {
     hover-select:           true;
     me-select-entry:        "";
     me-accept-entry:        "MousePrimary";
-
 }
 
 @theme "/dev/null"
-
-* {
-    bg0:                    #1d2021;
-    bg2:                    #3c3836;
-    fg1:                    #ebdbb2;
-    fg2:                    #d5c4a1;
-    yellow:                 #fabd2f;
-    
-    background-color:       transparent;
-    text-color:             @fg1;
-}
+@import "colors.rasi"
 
 window {
-    background-color:       @bg0;
-    border:                 3px;
-    border-color:           @yellow;
-    border-radius:          16px;
-    width:                  650px;
+    background-color:       @surface;
+    border:                 1px;
+    border-color:           @line;
+    border-radius:          18px;
+    width:                  680px;
     location:               center;
     anchor:                 center;
 }
 
 mainbox {
-    background-color:       transparent;
     children:               [ inputbar, listview ];
-    spacing:                15px;
-    padding:                20px;
+    spacing:                14px;
+    padding:                16px;
 }
 
 inputbar {
     children:               [ prompt, entry ];
-    background-color:       @bg2;
+    background-color:       @raised;
     border-radius:          12px;
-    padding:                12px 15px;
+    padding:                12px 14px;
     spacing:                10px;
 }
 
 prompt {
-    background-color:       transparent;
-    text-color:             @yellow;
+    text-color:             @faint;
 }
 
 entry {
-    background-color:       transparent;
-    text-color:             @fg1;
-    placeholder:            "Search clipboard...";
-    placeholder-color:      @fg2;
+    text-color:             @fg;
+    placeholder:            "search clipboard";
+    placeholder-color:      @faint;
+    cursor:                 text;
 }
 
 listview {
-    background-color:       transparent;
     columns:                1;
     lines:                  10;
-    spacing:                6px;
+    spacing:                2px;
     cycle:                  true;
     dynamic:                true;
     layout:                 vertical;
@@ -75,24 +60,22 @@ listview {
 }
 
 element {
-    background-color:       transparent;
-    padding:                10px 15px;
+    padding:                8px 12px;
     border-radius:          8px;
+    cursor:                 pointer;
 }
 
 element normal.normal,
 element alternate.normal {
-    background-color:       transparent;
-    text-color:             @fg1;
+    text-color:             @dim;
 }
 
 element selected.normal {
-    background-color:       @bg2;
-    text-color:             @yellow;
+    background-color:       @selected;
+    text-color:             @fg;
 }
 
 element-text {
-    background-color:       transparent;
     text-color:             inherit;
     vertical-align:         0.5;
     horizontal-align:       0.0;

@@ -1,0 +1,10 @@
+// "desktop underneath" variant of the bar, selected by bar_mode.sh.
+//
+// Same bar in every respect except that it stops reserving its strip, so tiled
+// windows run all the way to the top edge and pass under the pills. Keys in
+// this file win over the included one, so the single `exclusive` flip is the
+// whole diff — everything else stays defined in exactly one place.
+{
+    "include": ["~/.config/waybar/config.jsonc"],
+    "exclusive": false
+}

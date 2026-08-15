@@ -1,20 +1,28 @@
 window {
-    background-color: #282828;
-    color: #ebdbb2;
-    border: 3px solid #504945;
-    border-radius: 20px;
-    font-family: "JetBrainsMono Nerd Font";
+    background-color: rgba(20, 20, 20, 0.55);
+    color: #a2a2a2;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 22px;
+    font-family: "JetBrainsMono Nerd Font", monospace;
 }
 
-#input { display: none; } /* Esconde a busca no Power Menu */
+#input { display: none; }
 
 #entry {
-    margin: 15px;
-    padding: 40px 10px;
-    border-radius: 15px;
-    background-color: #3c3836;
+    margin: 14px;
+    padding: 34px 10px;
+    border-radius: 16px;
+    background-color: rgba(255, 255, 255, 0.06);
 }
 
-#entry:selected { background-color: #fabd2f; }
-#text { font-size: 25px; margin: auto; }
-#img { display: none; } /* Esconde o slot de ícone de imagem aqui */
+#entry:selected {
+    background-color: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+}
+
+#text {
+    font-size: 24px;
+    margin: auto;
+}
+
+#img { display: none; }

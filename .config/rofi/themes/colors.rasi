@@ -1,0 +1,21 @@
+/*******************************************************************************
+ * SHARED MONOCHROME PALETTE
+ * Imported by every theme in this directory. Colors are #RRGGBBAA — the
+ * translucency is real, Hyprland's `layerrule = blur, rofi` fills in behind it.
+ *******************************************************************************/
+
+* {
+    surface:    #1414148C;
+    raised:     #FFFFFF10;
+    hover:      #FFFFFF1A;
+    selected:   #FFFFFF24;
+    line:       #FFFFFF14;
+
+    fg:         #FFFFFFFF;
+    dim:        #A2A2A2FF;
+    faint:      #FFFFFF59;
+    urgent:     #FF5555FF;
+
+    background-color:   transparent;
+    text-color:         @dim;
+}

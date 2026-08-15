@@ -1,0 +1,35 @@
+/* Ephemeral workspace dots — see scripts/workspace_dots.py
+ *
+ * active   white     you are here
+ * occupied medium    has windows
+ * empty    faint     nothing there, but a later workspace is in use
+ *
+ * Every state uses the same font size on purpose: the dots must not shift
+ * horizontally as occupancy changes, or counting the gap stops working.
+ */
+
+.dots-window {
+    background-color: transparent;
+}
+
+.pill {
+    background-color: rgba(20, 20, 20, 0.55);
+    border-radius: 12px;
+    padding: 3px 7px;
+}
+
+.dot {
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 11px;
+    padding: 0 5px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.dot.empty {
+    color: rgba(255, 255, 255, 0.15);
+}
+
+.dot.active {
+    color: #ffffff;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+}

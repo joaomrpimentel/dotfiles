@@ -1,6 +1,6 @@
 /*******************************************************************************
  * POWERMENU THEME
- * Modern grid-style power menu with large icon buttons
+ * Grid of large icon buttons.
  *******************************************************************************/
 
 configuration {
@@ -9,36 +9,25 @@ configuration {
     hover-select:           true;
     me-select-entry:        "";
     me-accept-entry:        "MousePrimary";
-
 }
 
 @theme "/dev/null"
-
-* {
-    bg0:                    #1d2021;
-    bg2:                    #3c3836;
-    fg1:                    #ebdbb2;
-    yellow:                 #fabd2f;
-    
-    background-color:       transparent;
-    text-color:             @fg1;
-}
+@import "colors.rasi"
 
 window {
-    background-color:       @bg0;
-    border:                 3px;
-    border-color:           @yellow;
-    border-radius:          20px;
-    width:                  420px;
+    background-color:       @surface;
+    border:                 1px;
+    border-color:           @line;
+    border-radius:          22px;
+    width:                  400px;
     location:               center;
     anchor:                 center;
 }
 
 mainbox {
-    background-color:       transparent;
     children:               [ message, listview ];
-    spacing:                20px;
-    padding:                25px;
+    spacing:                18px;
+    padding:                22px;
 }
 
 message {
@@ -46,8 +35,7 @@ message {
 }
 
 textbox {
-    background-color:       transparent;
-    text-color:             @yellow;
+    text-color:             @faint;
     horizontal-align:       0.5;
 }
 
@@ -56,10 +44,9 @@ inputbar {
 }
 
 listview {
-    background-color:       transparent;
     columns:                2;
     lines:                  2;
-    spacing:                20px;
+    spacing:                14px;
     cycle:                  true;
     dynamic:                true;
     layout:                 vertical;
@@ -67,20 +54,20 @@ listview {
 }
 
 element {
-    background-color:       @bg2;
-    padding:                35px 20px;
+    background-color:       @raised;
+    padding:                30px 20px;
     border-radius:          16px;
+    cursor:                 pointer;
 }
 
 element selected.normal {
-    background-color:       @yellow;
-    text-color:             @bg0;
+    background-color:       @selected;
+    text-color:             @fg;
 }
 
 element-text {
-    background-color:       transparent;
     text-color:             inherit;
-    font:                   "JetBrainsMono Nerd Font 28";
+    font:                   "JetBrainsMono Nerd Font 26";
     horizontal-align:       0.5;
     vertical-align:         0.5;
 }

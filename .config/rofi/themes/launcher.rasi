@@ -1,6 +1,5 @@
 /*******************************************************************************
  * APP LAUNCHER THEME
- * Beautiful app selector with icons and modern styling
  *******************************************************************************/
 
 configuration {
@@ -8,9 +7,9 @@ configuration {
     combi-modes:            "drun,calc";
     combi-display-format:   "{text}";
     show-icons:             true;
-    display-drun:           " Apps";
-    display-run:            " Run";
-    display-calc:           " Calc";
+    display-drun:           "apps";
+    display-run:            "run";
+    display-calc:           "calc";
     display-combi:          "";
     drun-display-format:    "{name}";
     font:                   "JetBrainsMono Nerd Font 11";
@@ -20,60 +19,47 @@ configuration {
 }
 
 @theme "/dev/null"
-
-* {
-    bg0:                    #1d2021;
-    bg2:                    #3c3836;
-    fg1:                    #ebdbb2;
-    fg2:                    #d5c4a1;
-    yellow:                 #fabd2f;
-    
-    background-color:       transparent;
-    text-color:             @fg1;
-}
+@import "colors.rasi"
 
 window {
-    background-color:       @bg0;
-    border:                 3px;
-    border-color:           @yellow;
-    border-radius:          16px;
-    width:                  500px;
+    background-color:       @surface;
+    border:                 1px;
+    border-color:           @line;
+    border-radius:          18px;
+    width:                  520px;
     location:               center;
     anchor:                 center;
 }
 
 mainbox {
-    background-color:       transparent;
     children:               [ inputbar, listview ];
-    spacing:                15px;
-    padding:                20px;
+    spacing:                14px;
+    padding:                16px;
 }
 
 inputbar {
     children:               [ prompt, entry ];
-    background-color:       @bg2;
+    background-color:       @raised;
     border-radius:          12px;
-    padding:                12px 15px;
+    padding:                12px 14px;
     spacing:                10px;
 }
 
 prompt {
-    background-color:       transparent;
-    text-color:             @yellow;
+    text-color:             @faint;
 }
 
 entry {
-    background-color:       transparent;
-    text-color:             @fg1;
-    placeholder:            "Search...";
-    placeholder-color:      @fg2;
+    text-color:             @fg;
+    placeholder:            "search";
+    placeholder-color:      @faint;
+    cursor:                 text;
 }
 
 listview {
-    background-color:       transparent;
     columns:                1;
     lines:                  8;
-    spacing:                8px;
+    spacing:                2px;
     cycle:                  true;
     dynamic:                true;
     layout:                 vertical;
@@ -82,10 +68,10 @@ listview {
 }
 
 element {
-    background-color:       transparent;
-    padding:                12px 15px;
+    padding:                9px 12px;
     border-radius:          10px;
-    spacing:                15px;
+    spacing:                14px;
+    cursor:                 pointer;
 }
 
 element normal.normal,
@@ -94,27 +80,24 @@ element normal.urgent,
 element alternate.normal,
 element alternate.active,
 element alternate.urgent {
-    background-color:       transparent;
-    text-color:             @fg1;
+    text-color:             @dim;
 }
 
-element selected.normal {
-    background-color:       @bg2;
-    text-color:             @yellow;
-}
-
+element selected.normal,
 element selected.active {
-    background-color:       @yellow;
-    text-color:             @bg0;
+    background-color:       @selected;
+    text-color:             @fg;
+}
+
+element urgent {
+    text-color:             @urgent;
 }
 
 element-icon {
-    background-color:       transparent;
-    size:                   28px;
+    size:                   24px;
 }
 
 element-text {
-    background-color:       transparent;
     text-color:             inherit;
     vertical-align:         0.5;
     horizontal-align:       0.0;

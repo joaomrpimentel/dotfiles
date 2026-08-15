@@ -1,92 +1,103 @@
-/* Blocky Gruvbox Palette */
-@define-color bg #282828;
-@define-color bg-alt #3c3836;
-@define-color fg #ebdbb2;
-@define-color yellow #fabd2f;
-@define-color gray #a89984;
+/* Monochrome translucent — see .config/PALETTE.md
+ *
+ * Chrome tier: 0.55, the same alpha every other panel uses. Hyprland's blur is
+ * what stops the wallpaper bleeding a gradient through a text run. */
+@define-color pill   rgba(20, 20, 20, 0.55);
+@define-color fg     #ffffff;
+@define-color dim    #dcdcdc;
+@define-color hover  rgba(255, 255, 255, 0.10);
+@define-color urgent #ff5555;
 
 * {
+    font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font Mono", monospace;
+    font-size: 11px;
+    font-weight: normal;
+    min-height: 0;
     border: none;
     border-radius: 0;
-    font-family: "JetBrainsMono Nerd Font";
-    font-size: 14px;
-    font-weight: bold;
 }
 
 window#waybar {
-    background: @bg;
+    background-color: transparent;
     color: @fg;
-    border-bottom: 2px solid @bg-alt;
 }
 
-/* Workspaces */
-#workspaces {
-    background: @bg;
-    margin: 0;
-    padding: 0;
+/* The three pills. Nothing else has a background. */
+.modules-left,
+.modules-center,
+.modules-right {
+    background-color: @pill;
+    border-radius: 10px;
 }
 
-#workspaces button {
-    padding: 0 15px;
-    color: @gray;
-    background: transparent;
-    border-bottom: 3px solid transparent;
-    transition: all 0.3s ease;
-}
-
-#workspaces button.active {
-    color: @fg;
-    background: @bg-alt;
-    border-bottom: 3px solid @yellow;
-}
-
-#workspaces button:hover {
-    background: @bg-alt;
-    color: @fg;
-    border-bottom: 3px solid @yellow;
-}
-
-#window {
-    padding: 0 20px;
-    color: @fg;
-    background: @bg;
-}
-
-/* Modules Center & Right */
-#clock,
-#pulseaudio,
 #cpu,
+#custom-gpu,
 #memory,
-#network,
+#temperature,
+#custom-clock,
+#custom-media,
 #custom-weather,
+#pulseaudio,
 #tray,
 #custom-power {
-    padding: 0 15px;
-    background: @bg;
+    background-color: transparent;
+    color: @dim;
+    padding: 0 9px;
+    transition: color 0.15s ease;
+}
+
+#cpu:hover,
+#custom-gpu:hover,
+#memory:hover,
+#temperature:hover,
+#custom-clock:hover,
+#custom-media:hover,
+#custom-weather:hover,
+#pulseaudio:hover,
+#custom-power:hover {
     color: @fg;
-    border-left: 2px solid @bg-alt;
 }
 
-#clock {
-    color: @yellow;
-    background: @bg;
+#custom-clock {
+    color: @fg;
 }
 
-#pulseaudio {
-    color: @yellow;
+#custom-media {
+    min-width: 0;
+}
+
+
+#temperature.critical,
+#pulseaudio.muted {
+    color: @urgent;
 }
 
 #custom-power {
-    padding-right: 20px;
-    color: #cc241d;
-    /* Red for power */
+    font-size: 13px;
+    padding-right: 12px;
+}
+
+#custom-power:hover {
+    color: @urgent;
+}
+
+#tray {
+    padding: 0 6px;
+}
+
+#tray menu {
+    background-color: @pill;
+    color: @fg;
 }
 
 tooltip {
-    background: @bg;
-    border: 1px solid @yellow;
+    background-color: @pill;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
 }
 
 tooltip label {
     color: @fg;
+    font-size: 11px;
+    padding: 2px;
 }

@@ -1,61 +1,62 @@
 /*******************************************************************************
  * ROFI DEFAULT CONFIG
- * This is the fallback config - themes override this
+ * Fallback for bare `rofi` calls — the themes/ files override this.
  *******************************************************************************/
 
 configuration {
     modi:                   "drun";
     show-icons:             true;
-    display-drun:           " ";
+    display-drun:           "";
     drun-display-format:    "{name}";
     font:                   "JetBrainsMono Nerd Font 11";
     hover-select:           true;
     me-select-entry:        "";
     me-accept-entry:        "MousePrimary";
-
 }
 
 @theme "/dev/null"
-
-* {
-    bg:                     #282828;
-    fg:                     #ebdbb2;
-    accent:                 #fabd2f;
-    background-color:       @bg;
-    text-color:             @fg;
-}
+@import "themes/colors.rasi"
 
 window {
-    width:                  35%;
-    border:                 2px;
-    border-color:           @accent;
+    background-color:       @surface;
+    border:                 1px;
+    border-color:           @line;
+    border-radius:          18px;
+    width:                  520px;
+    padding:                16px;
+}
+
+inputbar {
+    background-color:       @raised;
     border-radius:          12px;
-    padding:                10px;
+    padding:                12px 14px;
+    margin:                 0 0 12px 0;
 }
 
 entry {
-    placeholder:            "Buscar...";
-    padding:                10px;
-    border-radius:          5px;
-    background-color:       #3c3836;
-    margin:                 5px;
+    text-color:             @fg;
+    placeholder:            "search";
+    placeholder-color:      @faint;
 }
 
 listview {
     lines:                  8;
     columns:                1;
+    spacing:                2px;
+    scrollbar:              false;
     fixed-height:           false;
 }
 
 element {
-    padding:                8px;
-    spacing:                10px;
+    padding:                9px 12px;
+    spacing:                14px;
+    border-radius:          10px;
+    cursor:                 pointer;
 }
 
 element selected {
-    background-color:       #3c3836;
-    text-color:             @accent;
-    border-radius:          8px;
+    background-color:       @selected;
+    text-color:             @fg;
 }
 
 element-icon {

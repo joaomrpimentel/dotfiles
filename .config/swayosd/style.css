@@ -1,28 +1,38 @@
+/* Monochrome translucent OSD */
+
 window {
-    background: rgba(40, 40, 40, 0.9);
-    border-radius: 10px;
-    border: 2px solid #fabd2f;
+    background: rgba(20, 20, 20, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
 }
 
 #container {
-    padding: 20px;
+    padding: 16px 20px;
+}
+
+image,
+label {
+    color: #ffffff;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 12px;
 }
 
 progressbar {
-    background-color: #504945;
-    border-radius: 5px;
+    background-color: transparent;
+    border-radius: 3px;
 }
 
 trough {
-    min-height: 10px;
-    min-width: 200px;
+    background-color: rgba(255, 255, 255, 0.12);
+    border: none;
+    border-radius: 3px;
+    min-height: 6px;
+    min-width: 180px;
 }
 
 progress {
-    background-color: #fabd2f; /* Amarelo Gruvbox */
-}
-
-label {
-    color: #ebdbb2;
-    font-family: "JetBrainsMono Nerd Font";
+    background-color: #ffffff;
+    border-radius: 3px;
+    min-height: 6px;
 }

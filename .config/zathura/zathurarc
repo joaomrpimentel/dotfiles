@@ -1,47 +1,58 @@
-# Zathura Gruvbox Dark Theme
+# Zathura — monochrome (see .config/PALETTE.md)
 
 # Basic settings
 set selection-clipboard clipboard
+set font "JetBrainsMono Nerd Font 10"
+# Keep the statusbar (page counter) — set this to "" for a bare page.
+set guioptions "sv"
+set statusbar-home-tilde true
+set window-title-basename true
+set adjust-open "best-fit"
+set scroll-step 80
 
-# UI Colors
-set default-bg "#282828"
-set default-fg "#ebdbb2"
+# Chrome. Everything here stays opaque on purpose: zathura ignores alpha on
+# `recolor-lightcolor`, so per-color rgba() would make the frame translucent
+# while the page itself stayed solid. The whole window is faded uniformly by
+# the `Zathura Glass` windowrule in hyprland.conf instead (reading tier, 0.75).
+set default-bg          "#0c0c0c"
+set default-fg          "#dcdcdc"
 
-set statusbar-bg "#282828"
-set statusbar-fg "#ebdbb2"
+set statusbar-bg        "#141414"
+set statusbar-fg        "#a2a2a2"
 
-set inputbar-bg "#282828"
-set inputbar-fg "#ebdbb2"
+set inputbar-bg         "#141414"
+set inputbar-fg         "#ffffff"
 
-set notification-bg "#282828"
-set notification-fg "#ebdbb2"
-set notification-error-bg "#282828"
-set notification-error-fg "#cc241d"
-set notification-warning-bg "#282828"
-set notification-warning-fg "#d79921"
+set notification-bg         "#141414"
+set notification-fg         "#dcdcdc"
+set notification-error-bg   "#141414"
+set notification-error-fg   "#ff5555"
+set notification-warning-bg "#141414"
+set notification-warning-fg "#ffffff"
 
-set completion-bg "#282828"
-set completion-fg "#ebdbb2"
-set completion-group-bg "#282828"
-set completion-group-fg "#d79921"
-set completion-highlight-bg "#d65d0e"
-set completion-highlight-fg "#ebdbb2"
+set completion-bg           "#141414"
+set completion-fg           "#a2a2a2"
+set completion-group-bg     "#0c0c0c"
+set completion-group-fg     "#ffffff"
+set completion-highlight-bg "#2a2a2a"
+set completion-highlight-fg "#ffffff"
 
-set index-bg "#282828"
-set index-fg "#ebdbb2"
-set index-active-bg "#d65d0e"
-set index-active-fg "#ebdbb2"
+set index-bg            "#0c0c0c"
+set index-fg            "#a2a2a2"
+set index-active-bg     "#2a2a2a"
+set index-active-fg     "#ffffff"
 
-set render-loading-bg "#282828"
-set render-loading-fg "#ebdbb2"
+set render-loading      true
+set render-loading-bg   "#0c0c0c"
+set render-loading-fg   "#a2a2a2"
 
-# Highlight colors
-set highlight-color "rgba(215, 153, 33, 0.5)"
-set highlight-active-color "rgba(69, 133, 136, 0.5)"
+# Search hits: white wash rather than a hue, so the page stays monochrome
+set highlight-color        "rgba(255, 255, 255, 0.22)"
+set highlight-active-color "rgba(255, 255, 255, 0.48)"
 
-# Recolor options (Dark Mode for PDFs)
-set recolor "true"
-set recolor-lightcolor "#282828"
-set recolor-darkcolor "#ebdbb2"
-set recolor-reverse-video "true"
-set recolor-keephue "true"
+# Dark mode for the documents themselves
+set recolor true
+set recolor-lightcolor "#0c0c0c"
+set recolor-darkcolor  "#dcdcdc"
+set recolor-reverse-video true
+set recolor-keephue true

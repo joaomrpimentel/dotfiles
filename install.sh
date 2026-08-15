@@ -10,13 +10,18 @@ BACKUP_SUFFIX=".backup_$(date +%Y%m%d_%H%M%S)"
 echo "Installing dotfiles from $DOTFILES_DIR..."
 
 # List of directories to symlink (relative to .config)
-DIRS=("hypr" "waybar" "swaync" "kitty" "zathura" "rofi" "wofi" "scripts" "nvim" "waypaper" "swayosd" "walker" "gsimplecal")
+DIRS=("hypr" "waybar" "swaync" "kitty" "zathura" "rofi" "wofi" "scripts" "nvim" "waypaper" "swayosd" "walker" "gsimplecal" "bat" "qt6ct")
 
 # List of individual files to symlink: "<source-rel-to-repo>:<target-abs-path>"
+# gtk-3.0 / gtk-4.0 are files rather than whole dirs: those directories also
+# hold state we don't own (bookmarks, theme assets).
 FILES=(
     ".zshrc:$HOME/.zshrc"
     ".config/starship.toml:$HOME/.config/starship.toml"
     ".config/gtk-3.0/gtk.css:$HOME/.config/gtk-3.0/gtk.css"
+    ".config/gtk-3.0/settings.ini:$HOME/.config/gtk-3.0/settings.ini"
+    ".config/gtk-4.0/gtk.css:$HOME/.config/gtk-4.0/gtk.css"
+    ".config/gtk-4.0/settings.ini:$HOME/.config/gtk-4.0/settings.ini"
 )
 
 for dir in "${DIRS[@]}"; do
@@ -120,6 +125,13 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
         "wofi"
         "gsimplecal"
         "swayosd-git"
+        # Ephemeral workspace dots (hypr/scripts/workspace_dots.py)
+        "python-gobject"
+        "gtk-layer-shell"
+        # waybar media module + volume control + bar_mode.sh toast
+        "playerctl"
+        "pavucontrol"
+        "libnotify"
         "network-manager-applet"
         "wl-clipboard"
         "cliphist"

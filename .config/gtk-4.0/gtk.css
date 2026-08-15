@@ -1,0 +1,46 @@
+/* GTK4 / libadwaita — monochrome (see .config/PALETTE.md)
+ *
+ * Adwaita's own dark palette is already neutral; what gives it away is the blue
+ * accent on every selection, toggle and focus ring. Redefining libadwaita's
+ * named colors is enough — no theme package needed. Walker is a GTK4 app, so
+ * this also backstops its own stylesheet. */
+
+@define-color accent_color              #ffffff;
+@define-color accent_bg_color           #2f2f2f;
+@define-color accent_fg_color           #ffffff;
+
+@define-color window_bg_color           #141414;
+@define-color window_fg_color           #dcdcdc;
+
+@define-color view_bg_color             #101010;
+@define-color view_fg_color             #dcdcdc;
+
+@define-color headerbar_bg_color        #1a1a1a;
+@define-color headerbar_fg_color        #dcdcdc;
+@define-color headerbar_border_color    #dcdcdc;
+@define-color headerbar_backdrop_color  #141414;
+
+@define-color sidebar_bg_color          #121212;
+@define-color sidebar_fg_color          #dcdcdc;
+@define-color sidebar_backdrop_color    #101010;
+
+@define-color card_bg_color             #1c1c1c;
+@define-color card_fg_color             #dcdcdc;
+
+@define-color dialog_bg_color           #161616;
+@define-color dialog_fg_color           #dcdcdc;
+
+@define-color popover_bg_color          #1a1a1a;
+@define-color popover_fg_color          #dcdcdc;
+
+@define-color destructive_bg_color      #ff5555;
+@define-color destructive_color         #ff5555;
+@define-color destructive_fg_color      #ffffff;
+
+/* No colored status either — same reason. */
+@define-color success_bg_color          #3a3a3a;
+@define-color success_color             #dcdcdc;
+@define-color warning_bg_color          #3a3a3a;
+@define-color warning_color             #dcdcdc;
+@define-color error_bg_color            #ff5555;
+@define-color error_color               #ff5555;

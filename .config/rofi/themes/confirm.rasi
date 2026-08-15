@@ -1,6 +1,5 @@
 /*******************************************************************************
  * CONFIRMATION DIALOG THEME
- * Small confirmation popup
  *******************************************************************************/
 
 configuration {
@@ -9,43 +8,31 @@ configuration {
 }
 
 @theme "/dev/null"
-
-* {
-    bg0:                    #1d2021;
-    bg2:                    #3c3836;
-    fg1:                    #ebdbb2;
-    red:                    #fb4934;
-    
-    background-color:       transparent;
-    text-color:             @fg1;
-}
+@import "colors.rasi"
 
 window {
-    background-color:       @bg0;
-    border:                 2px;
-    border-color:           @red;
-    border-radius:          12px;
-    width:                  200px;
+    background-color:       @surface;
+    border:                 1px;
+    border-color:           @line;
+    border-radius:          14px;
+    width:                  220px;
     location:               center;
     anchor:                 center;
-    padding:                15px;
+    padding:                14px;
 }
 
 mainbox {
-    background-color:       transparent;
     children:               [ inputbar, listview ];
     spacing:                10px;
 }
 
 inputbar {
     children:               [ prompt ];
-    background-color:       transparent;
-    padding:                5px;
+    padding:                4px;
 }
 
 prompt {
-    background-color:       transparent;
-    text-color:             @red;
+    text-color:             @urgent;
 }
 
 entry {
@@ -53,25 +40,23 @@ entry {
 }
 
 listview {
-    background-color:       transparent;
     lines:                  2;
     columns:                1;
-    spacing:                5px;
+    spacing:                4px;
 }
 
 element {
-    background-color:       transparent;
-    padding:                8px 15px;
+    padding:                8px 14px;
     border-radius:          8px;
+    cursor:                 pointer;
 }
 
 element selected.normal {
-    background-color:       @red;
-    text-color:             @bg0;
+    background-color:       @selected;
+    text-color:             @fg;
 }
 
 element-text {
-    background-color:       transparent;
     text-color:             inherit;
     horizontal-align:       0.5;
 }

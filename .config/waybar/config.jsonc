@@ -1,16 +1,95 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 30,
-    "modules-left": ["hyprland/window"],
-    "modules-center": [],
-    "modules-right": ["clock", "tray"],
-    "hyprland/window": {
-        "format": "{title}",
-        "max-length": 50
+    "height": 28,
+    "spacing": 0,
+    "margin-top": 6,
+    "margin-left": 8,
+    "margin-right": 8,
+
+    "modules-left": ["cpu", "custom/gpu", "memory", "temperature"],
+    "modules-center": ["custom/clock"],
+    "modules-right": ["custom/media", "custom/weather", "pulseaudio", "tray", "custom/power"],
+
+    "cpu": {
+        "format": "CPU {usage}%",
+        "interval": 2,
+        "tooltip": false
     },
-    "clock": {
-        "format": "{:%d/%m/%Y - %H:%M}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+
+    "custom/gpu": {
+        "exec": "~/.config/waybar/scripts/gpu_usage.sh",
+        "interval": 2,
+        "format": "GPU {}%",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "RAM {percentage}%",
+        "interval": 2,
+        "tooltip-format": "{used:0.1f}G / {total:0.1f}G"
+    },
+
+    "temperature": {
+        // coretemp "Package id 0" — absolute path survives hwmonN renumbering
+        "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
+        "input-filename": "temp1_input",
+        "critical-threshold": 85,
+        "format": "{temperatureC}°C",
+        "interval": 2,
+        "tooltip": false
+    },
+
+    // Waybar's own clock module ignores the `locale` option here, so shell out
+    // to date(1) with LC_TIME instead — that's what gives pt_BR day/month names.
+    "custom/clock": {
+        "format": "{}",
+        "exec": "LC_TIME=pt_BR.UTF-8 date '+%a %d %b  %H:%M'",
+        "interval": 20,
+        "on-click": "gsimplecal",
+        "tooltip": false
+    },
+
+    // Not waybar's mpris module: that one vanishes entirely when no player
+    // exists, and the pill should keep its resting placeholder instead.
+    "custom/media": {
+        "exec": "~/.config/waybar/scripts/media.sh",
+        "return-type": "json",
+        "interval": 2,
+        "max-length": 42,
+        "tooltip": false,
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous"
+    },
+
+    "custom/weather": {
+        "format": "{}",
+        "interval": 3600,
+        "exec": "~/.config/waybar/scripts/weather_satellite.sh check",
+        "on-click": "~/.config/waybar/scripts/weather_satellite.sh show",
+        "tooltip": false
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "MUTED",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "tooltip": false,
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    },
+
+    "tray": {
+        "icon-size": 14,
+        "spacing": 8
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "on-click": "~/.config/rofi/scripts/powermenu.sh"
     }
 }

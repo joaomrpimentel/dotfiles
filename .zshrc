@@ -56,13 +56,16 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light Aloxaf/fzf-tab
 
+# Monochrome fzf palette, shared by fzf-tab and plain fzf
+FZF_MONO_COLORS="--color=fg:#a2a2a2,bg:-1,hl:#ffffff --color=fg+:#ffffff,bg+:#1a1a1a,hl+:#ffffff --color=info:#6e6e6e,prompt:#ffffff,pointer:#ffffff --color=marker:#ffffff,spinner:#6e6e6e,header:#6e6e6e,border:#3a3a3a"
+
 # fzf-tab styling
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always --icons=auto $realpath 2>/dev/null || ls -1 $realpath'
-zstyle ':fzf-tab:*' fzf-flags --color=fg:#ebdbb2,bg:#282828,hl:#fabd2f --color=fg+:#fabd2f,bg+:#3c3836,hl+:#fe8019 --color=info:#8ec07c,prompt:#fabd2f,pointer:#fb4934 --color=marker:#b8bb26,spinner:#d3869b,header:#83a598
+zstyle ':fzf-tab:*' fzf-flags ${=FZF_MONO_COLORS}
 zstyle ':fzf-tab:*' switch-group ',' '.'
 
-# Autosuggestion color (gruvbox)
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#665c54"
+# Autosuggestion color
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#4a4a4a"
 
 # ---------- Key bindings ----------
 bindkey -e
@@ -104,4 +107,4 @@ command -v atuin >/dev/null && eval "$(atuin init zsh --disable-up-arrow)"
 # fzf keybinds (ctrl-t, alt-c)
 [[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh
 [[ -f /usr/share/fzf/completion.zsh ]]   && source /usr/share/fzf/completion.zsh
-export FZF_DEFAULT_OPTS="--color=fg:#ebdbb2,bg:#282828,hl:#fabd2f --color=fg+:#fabd2f,bg+:#3c3836,hl+:#fe8019 --color=info:#8ec07c,prompt:#fabd2f,pointer:#fb4934 --color=marker:#b8bb26,spinner:#d3869b,header:#83a598 --height=40% --layout=reverse --border"
+export FZF_DEFAULT_OPTS="$FZF_MONO_COLORS --height=40% --layout=reverse --border=rounded"

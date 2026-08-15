@@ -1,0 +1,5 @@
+# bat — `ansi` renders syntax through the terminal's own 16 colors, which
+# kitty.conf already desaturated, so highlighting stays legible without
+# dragging a second, louder palette into the terminal.
+--theme="ansi"
+--style="numbers,changes"

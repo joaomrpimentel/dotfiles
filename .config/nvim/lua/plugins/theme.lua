@@ -1,33 +1,24 @@
+-- Monochrome colorscheme: zenwritten (zenbones family).
+-- Grayscale UI with just enough contrast for treesitter/LSP, and a
+-- transparent background so kitty's translucency shows through.
 return {
+  { "rktjmp/lush.nvim", lazy = true },
   {
-    "ellisonleao/gruvbox.nvim",
-    priority = 1000, -- make sure to load this before all the other start plugins
+    "mcchrish/zenbones.nvim",
+    dependencies = { "rktjmp/lush.nvim" },
+    priority = 1000,
     config = function()
-      require("gruvbox").setup({
-        terminal_colors = true, -- add neovim terminal colors
-        undercurl = true,
-        underline = true,
-        bold = true,
-        italic = {
-          strings = true,
-          emphasis = true,
-          comments = true,
-          operators = false,
-          folds = true,
-        },
-        strikethrough = true,
-        invert_selection = false,
-        invert_signs = false,
-        invert_tabline = false,
-        invert_intend_guides = false,
-        inverse = true, -- invert background for search, diffs, statuslines and errors
-        contrast = "dark", -- can be "hard", "soft" or empty string
-        palette_overrides = {},
-        overrides = {},
-        dim_inactive = false,
-        transparent_mode = false,
-      })
-      vim.cmd("colorscheme gruvbox")
+      vim.g.zenbones_darken_comments = 45
+      vim.g.zenwritten_transparent_background = true
+      vim.g.zenwritten_lighten_noncurrent_window = true
+      vim.o.background = "dark"
+      vim.cmd("colorscheme zenwritten")
+
+      -- Keep floats/splits reading as one surface with the terminal
+      for _, group in ipairs({ "NormalFloat", "FloatBorder", "SignColumn", "NormalNC" }) do
+        vim.api.nvim_set_hl(0, group, { bg = "none" })
+      end
+      vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#2a2a2a", bg = "none" })
     end,
   },
 }
