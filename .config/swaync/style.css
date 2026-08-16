@@ -1,6 +1,7 @@
 /* Monochrome translucent SwayNC — matches waybar/walker/rofi. */
 
-@define-color surface  rgba(20, 20, 20, 0.55);
+/* Glass tint — see waybar/style.css for the recipe. */
+@define-color surface  rgba(18, 18, 20, 0.28);
 @define-color raised   rgba(255, 255, 255, 0.06);
 @define-color hover    rgba(255, 255, 255, 0.12);
 @define-color selected rgba(255, 255, 255, 0.20);
@@ -20,12 +21,22 @@
 
 /* ==================== CONTROL CENTER ==================== */
 .control-center {
-    background: @surface;
-    border: 1px solid @line;
-    border-radius: 16px;
+    background-color: @surface;
+    background-image: linear-gradient(160deg,
+        rgba(255, 255, 255, 0.13) 0%,
+        rgba(255, 255, 255, 0.04) 22%,
+        rgba(255, 255, 255, 0.00) 45%);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    border-radius: 18px;
     margin: 10px;
     padding: 12px;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+    box-shadow:
+        inset 0  1px 0 rgba(255, 255, 255, 0.24),
+        inset 1px 0 0 rgba(255, 255, 255, 0.07),
+        inset 0 -1px 0 rgba(0,   0,   0,   0.30);
+    /* No drop shadow: hyprglass masks on surface alpha and treats a shadow as
+       content, so it renders the shadow as a glass blob around the panel. The
+       plugin's own fresnel edge is the depth cue now. */
 }
 
 .control-center-list {
@@ -85,7 +96,9 @@ scrollbar trough {
     border-radius: 14px;
     padding: 0 4px;
     margin: 8px 12px;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+    /* No drop shadow. swaync-notification-window is a glassed layer surface and
+       hyprglass masks on alpha, so the shadow renders as a glass blob around
+       every toast. Same reason the control-center lost its shadow above. */
 }
 
 .notification-background {

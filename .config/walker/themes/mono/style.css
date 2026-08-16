@@ -1,6 +1,7 @@
 /* Monochrome translucent Walker */
 
-@define-color surface  rgba(20, 20, 20, 0.55);
+/* Glass tint — see waybar/style.css for the recipe. */
+@define-color surface  rgba(18, 18, 20, 0.28);
 @define-color raised   rgba(255, 255, 255, 0.06);
 @define-color hover    rgba(255, 255, 255, 0.10);
 @define-color selected rgba(255, 255, 255, 0.14);
@@ -15,10 +16,16 @@
 }
 
 popover {
-  background: @surface;
-  border: 1px solid @line;
+  background-color: @surface;
+  background-image: linear-gradient(160deg,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0.00) 50%);
+  border: 1px solid rgba(255, 255, 255, 0.11);
   border-radius: 14px;
   padding: 10px;
+  box-shadow:
+      inset 0  1px 0 rgba(255, 255, 255, 0.20),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.26);
 }
 
 .normal-icons { -gtk-icon-size: 18px; }
@@ -27,11 +34,19 @@ popover {
 scrollbar { opacity: 0; }
 
 .box-wrapper {
-  background: @surface;
-  border: 1px solid @line;
+  background-color: @surface;
+  background-image: linear-gradient(160deg,
+      rgba(255, 255, 255, 0.13) 0%,
+      rgba(255, 255, 255, 0.04) 22%,
+      rgba(255, 255, 255, 0.00) 45%);
+  border: 1px solid rgba(255, 255, 255, 0.11);
   border-radius: 18px;
   padding: 16px;
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55);
+  box-shadow:
+      inset 0  1px 0 rgba(255, 255, 255, 0.24),
+      inset 1px 0 0 rgba(255, 255, 255, 0.07),
+      inset 0 -1px 0 rgba(0,   0,   0,   0.30);
+  /* No drop shadow — see swaync/style.css: it renders as a glass blob. */
 }
 
 .preview-box,

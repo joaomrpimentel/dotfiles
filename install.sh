@@ -10,7 +10,7 @@ BACKUP_SUFFIX=".backup_$(date +%Y%m%d_%H%M%S)"
 echo "Installing dotfiles from $DOTFILES_DIR..."
 
 # List of directories to symlink (relative to .config)
-DIRS=("hypr" "waybar" "swaync" "kitty" "zathura" "rofi" "wofi" "scripts" "nvim" "waypaper" "swayosd" "walker" "gsimplecal" "bat" "qt6ct")
+DIRS=("hypr" "waybar" "swaync" "kitty" "zathura" "wofi" "scripts" "nvim" "waypaper" "swayosd" "walker" "gsimplecal" "bat" "qt6ct" "fontconfig")
 
 # List of individual files to symlink: "<source-rel-to-repo>:<target-abs-path>"
 # gtk-3.0 / gtk-4.0 are files rather than whole dirs: those directories also
@@ -113,7 +113,6 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
         "waybar"
         "swaync"
         "kitty"
-        "rofi-wayland"
         "libqalculate"
         # Walker launcher + providers (AUR)
         "walker-bin"

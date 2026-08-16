@@ -1,8 +1,23 @@
-/* Monochrome translucent — see .config/PALETTE.md
+/* Monochrome translucent glass.
  *
- * Chrome tier: 0.55, the same alpha every other panel uses. Hyprland's blur is
- * what stops the wallpaper bleeding a gradient through a text run. */
-@define-color pill   rgba(20, 20, 20, 0.55);
+ * The glass is three layers stacked, and it only reads as glass with all
+ * three — this is the reference copy of the recipe, the other panels repeat
+ * it. Alpha dropped 0.55 -> 0.42 because Hyprland now runs 4 blur passes at
+ * vibrancy 0.32 (see hypr/hyprland.conf); at the old alpha that material is
+ * hidden behind the pill instead of showing through it.
+ *
+ *   1. tint      a dark, fairly transparent base — the blur does the work
+ *   2. sheen     a diagonal white gradient, strongest top-left, gone by 60%
+ *   3. rim       1px inset white on top, 1px inset black on the bottom
+ *
+ * Layer 3 is what actually sells it. A lit top edge and a shaded bottom edge
+ * is how a real bevel catches a light source above it, and the eye reads that
+ * pairing as thickness. Drop the black and it flattens into a decal.
+ *
+ * What this CANNOT do: bend the wallpaper through the edges. Refraction and
+ * chromatic aberration need a shader sampling the framebuffer, which is a
+ * compositor plugin (hyprglass), not CSS. */
+@define-color pill   rgba(18, 18, 20, 0.28);
 @define-color fg     #ffffff;
 @define-color dim    #dcdcdc;
 @define-color hover  rgba(255, 255, 255, 0.10);
@@ -10,8 +25,12 @@
 
 * {
     font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font Mono", monospace;
-    font-size: 11px;
-    font-weight: normal;
+    /* GTK CSS px are literal pixels, not points. The rest of the dotfiles ask
+     * for 10-11pt, which is ~13-14px at 96dpi — 11px here was the odd one out.
+     * This panel is a 2560x1080 ultrawide at ~81dpi, so small text has almost
+     * no pixels per stem to work with. Weight 500 puts the stems back. */
+    font-size: 13px;
+    font-weight: 500;
     min-height: 0;
     border: none;
     border-radius: 0;
@@ -27,7 +46,27 @@ window#waybar {
 .modules-center,
 .modules-right {
     background-color: @pill;
-    border-radius: 10px;
+    /* 160deg puts the light source up and to the left. Fully out by 58% so the
+     * lower half stays clean behind the text — a sheen that runs the whole
+     * height washes out glyphs at this size. */
+    background-image: linear-gradient(160deg,
+        rgba(255, 255, 255, 0.14) 0%,
+        rgba(255, 255, 255, 0.05) 34%,
+        rgba(255, 255, 255, 0.00) 58%,
+        rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    /* Radius up from 10: a wider curve gives the rim more arc to catch the
+     * light on, which is most of why Apple's version reads as thick. */
+    border-radius: 14px;
+    box-shadow:
+        inset 0  1px 0 rgba(255, 255, 255, 0.24),
+        inset 1px 0 0 rgba(255, 255, 255, 0.07),
+        inset 0 -1px 0 rgba(0,   0,   0,   0.30);
+    /* No outer drop shadow here. This is a layer surface only as tall as the
+     * bar, so a drop shadow gets clipped flat against the surface bounds and
+     * reads as a hard rectangle escaping the pill rather than a soft glow.
+     * The inset rim above is what carries the depth. Same applies to any
+     * panel whose surface hugs its content — see hypr/dots.css. */
 }
 
 #cpu,
@@ -73,7 +112,7 @@ window#waybar {
 }
 
 #custom-power {
-    font-size: 13px;
+    font-size: 15px;
     padding-right: 12px;
 }
 
@@ -98,6 +137,6 @@ tooltip {
 
 tooltip label {
     color: @fg;
-    font-size: 11px;
+    font-size: 13px;
     padding: 2px;
 }
