@@ -2,9 +2,10 @@
  *
  * The glass is three layers stacked, and it only reads as glass with all
  * three — this is the reference copy of the recipe, the other panels repeat
- * it. Alpha dropped 0.55 -> 0.42 because Hyprland now runs 4 blur passes at
- * vibrancy 0.32 (see hypr/hyprland.conf); at the old alpha that material is
- * hidden behind the pill instead of showing through it.
+ * it. Alpha dropped 0.55 -> 0.42 because Hyprland runs its blur at vibrancy
+ * 0.32 (see hypr/hyprland.conf); at the old alpha that material is hidden
+ * behind the pill instead of showing through it. Passes are down to 2 at size
+ * 4 there — a wider kernel leaked blur past these rounded corners.
  *
  *   1. tint      a dark, fairly transparent base — the blur does the work
  *   2. sheen     a diagonal white gradient, strongest top-left, gone by 60%
