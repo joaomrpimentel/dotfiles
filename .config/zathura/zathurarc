@@ -13,7 +13,7 @@ set scroll-step 80
 # Chrome. Everything here stays opaque on purpose: zathura ignores alpha on
 # `recolor-lightcolor`, so per-color rgba() would make the frame translucent
 # while the page itself stayed solid. The whole window is faded uniformly by
-# the `Zathura Glass` windowrule in hyprland.conf instead (reading tier, 0.75).
+# the `zathura-glass` window rule in hyprland.lua instead (reading tier, 0.75).
 set default-bg          "#0c0c0c"
 set default-fg          "#dcdcdc"
 

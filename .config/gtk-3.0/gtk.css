@@ -21,38 +21,3 @@
 @define-color error_color               #ff5555;
 @define-color warning_color             #dcdcdc;
 @define-color success_color             #dcdcdc;
-
-/* gsimplecal calendar popup. Scoped to the calendar widget on purpose — a
- * blanket `window.background` rule would repaint every GTK3 app's window and
- * fight their own layouts; the named colors above already handle those. */
-calendar {
-  background-color: @mono_bg;
-  color: @mono_dim;
-  border: 1px solid @mono_line;
-  padding: 6px;
-}
-
-calendar:selected {
-  background-color: @mono_fg;
-  color: @mono_bg;
-}
-
-calendar.header {
-  background-color: @mono_bg;
-  color: @mono_fg;
-}
-
-calendar.button {
-  color: @mono_dim;
-  background-color: @mono_raised;
-}
-
-calendar.button:hover {
-  background-color: @mono_line;
-  color: @mono_fg;
-}
-
-/* today / days outside the current month */
-calendar.highlight {
-  color: @mono_fg;
-}

@@ -17,12 +17,13 @@ values and the one deliberate exception (the terminal keeps hued ANSI colors, or
 
 ## Included configurations
 
-- **Hyprland** — compositor, 1px borders, blur, layer-surface slide animations.
-- **Waybar** — top bar as three floating translucent pills.
-- **SwayNC** — notification center and control panel.
-- **SwayOSD** — volume/brightness OSD.
-- **Walker** — main launcher.
-- **Rofi** — clipboard history and power menu.
+- **Hyprland** — compositor, configured in Lua (`hypr/hyprland.lua`), 1px
+  borders, blur, spring animations.
+- **Quickshell** — everything on screen that isn't a window, in
+  `quickshell/`: the bar (three translucent pills), and every menu growing out
+  of the pill it belongs to — calendar, launcher (apps, calculator, commands,
+  clipboard), wallpaper picker, control center, power menu, weather satellite,
+  volume OSD — plus notification toasts and the workspace dots.
 - **Kitty** — terminal, translucent, desaturated ANSI palette.
 - **Neovim** — LazyVim-ish setup on the `zenwritten` grayscale colorscheme.
 - **Zsh + Starship** — zinit plugins, monochrome fzf, two-line minimal prompt.
@@ -30,7 +31,6 @@ values and the one deliberate exception (the terminal keeps hued ANSI colors, or
 - **Waypaper / awww** — wallpaper.
 - **Toolkit themes** — this is what stops third-party apps from being the odd
   one out.
-- **gsimplecal** — calendar popup, styled from `gtk-3.0/gtk.css`.
 
 Not managed here, and still on their own palettes: btop (set to the stock
 `greyscale` theme in `~/.config/btop/btop.conf`, which this repo doesn't own),
@@ -40,9 +40,9 @@ mpv, vlc, obs and the browsers.
 
 | Keys | Action |
 | --- | --- |
-| `SUPER` (tap) | Walker launcher |
+| `SUPER` (tap) | launcher (`=` calc, `>` run, `:` clipboard) |
 | `SUPER + T` / `B` / `E` | terminal / browser / files |
-| `SUPER + N` | notification center |
+| `SUPER + N` | control center + notifications |
 | `SUPER + V` | clipboard history |
 | `SUPER + W` | wallpaper picker |
 | `SUPER + P` | cycle bar mode: normal → por baixo → oculta |
@@ -50,6 +50,7 @@ mpv, vlc, obs and the browsers.
 | `SUPER + Q` / `F` | close / fullscreen |
 | `SUPER + ALT + F` | toggle float |
 | `SUPER + SHIFT + S` | screenshot to clipboard |
+| `SUPER + SHIFT + R` | 2560x1080 ↔ 1920x1080 (recording) |
 | `SUPER + 1..0` | workspace (pops the dots) |
 | `SUPER + SHIFT/ALT + 1..0` | move window there (with / without following) |
 | `CTRL + ALT + DEL` | power menu |

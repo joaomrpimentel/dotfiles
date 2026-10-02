@@ -10,7 +10,7 @@ BACKUP_SUFFIX=".backup_$(date +%Y%m%d_%H%M%S)"
 echo "Installing dotfiles from $DOTFILES_DIR..."
 
 # List of directories to symlink (relative to .config)
-DIRS=("hypr" "waybar" "swaync" "kitty" "zathura" "wofi" "scripts" "nvim" "waypaper" "swayosd" "walker" "gsimplecal" "bat" "qt6ct" "fontconfig")
+DIRS=("hypr" "quickshell" "kitty" "zathura" "nvim" "waypaper" "bat" "qt6ct" "fontconfig")
 
 # List of individual files to symlink: "<source-rel-to-repo>:<target-abs-path>"
 # gtk-3.0 / gtk-4.0 are files rather than whole dirs: those directories also
@@ -109,28 +109,16 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     PACKAGES=(
         "hyprland"
         "hyprlock"
-        "hyprpicker"
-        "waybar"
-        "swaync"
-        "kitty"
-        "libqalculate"
-        # Walker launcher + providers (AUR)
-        "walker-bin"
-        "elephant-bin"
-        "elephant-desktopapplications-bin"
-        "elephant-calc-bin"
-        "elephant-clipboard-bin"
-        "elephant-runner-bin"
-        "wofi"
-        "gsimplecal"
-        "swayosd-git"
-        # Ephemeral workspace dots (hypr/scripts/workspace_dots.py)
-        "python-gobject"
-        "gtk-layer-shell"
-        # waybar media module + volume control + bar_mode.sh toast
-        "playerctl"
-        "pavucontrol"
-        "libnotify"
+        # Bar, menus, launcher, notifications, OSD, workspace dots, wallpaper
+        # picker — all of it is quickshell/. The rest of this group is what
+        # its panels shell out to.
+        "quickshell"
+        "libqalculate"   # launcher calculator (qalc)
+        "wlsunset"       # control center: night light
+        "hyprpicker"     # control center: colour picker; screenshot freeze
+        "playerctl"      # media keys
+        "pavucontrol"    # click on the volume
+        "libnotify"      # notify-send
         "network-manager-applet"
         "wl-clipboard"
         "cliphist"
@@ -140,10 +128,8 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
         "waypaper"
         "awww"
         "polkit-gnome"
-        "ttf-font-awesome"
         "ttf-jetbrains-mono-nerd"
-        "imagemagick"
-        "feh"
+        "imagemagick"    # crops the weather satellite image
         "thunar" "thunar-archive-plugin" "thunar-volman" "tumbler" "ffmpegthumbnailer" # Thunar extras
         "zathura" "zathura-pdf-mupdf" "zathura-cb" # Zathura extras
         "vivaldi"
